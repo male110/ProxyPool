@@ -1,0 +1,13 @@
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.csproj.CoreCompileInputs.cache
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.AssemblyInfoInputs.cache
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.AssemblyInfo.cs
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\NLog.config
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\ProxyPool.deps.json
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\ProxyPool.runtimeconfig.json
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\ProxyPool.runtimeconfig.dev.json
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\ProxyPool.dll
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\ProxyPool.pdb
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.dll
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.pdb
+G:\Proxy\ProxyPool\obj\Debug\netcoreapp2.0\ProxyPool.csprojResolveAssemblyReference.cache
+G:\Proxy\ProxyPool\bin\Debug\netcoreapp2.0\appsettings.json
