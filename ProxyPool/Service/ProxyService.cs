@@ -57,7 +57,7 @@ namespace ProxyPool
             var ret = new List<Proxy>();
             try
             {
-                return dbcontext.Proxy.Skip(page * pageSize).Take(pageSize).OrderBy(x => x.Id).ToList();
+                return dbcontext.Proxy.Skip((page-1) * pageSize).Take(pageSize).OrderBy(x => x.Id).ToList();
             }
             catch (Exception ex)
             {
@@ -98,11 +98,15 @@ namespace ProxyPool
                 LogHelper.LogError("删除代理失败：" + ex);
             }
         }
-        public int Delete(int[] proxyIds)
+        public int Delete(List<Proxy> lstProxy)
         {
-            if (proxyIds.Length == 0)
+            if (lstProxy == null|| lstProxy.Count == 0)
                 return 0;
-            return dbcontext.Database.ExecuteSqlCommand("delete from Proxy where Id in ?ids", new MySqlParameter("?ids", proxyIds));
+            foreach(var item in lstProxy)
+            {
+                dbcontext.Proxy.Remove(item);
+            }
+            return dbcontext.SaveChanges();
         }
         #endregion
 
@@ -144,9 +148,7 @@ namespace ProxyPool
                 return;
             try
             {
-                var arrAdress = lstProxy.Select(x => x.Adress).ToList();
-                var existList=dbcontext.Proxy.Where(p => arrAdress.Contains(p.Adress)).ToList();
-                var newList = lstProxy.Where(p => !existList.Exists(e => e.Adress == p.Adress && e.Port == p.Port));
+                var newList = FilterExist(lstProxy);
                 foreach (var p in newList)
                 {
                     p.CreateDate = DateTime.Now;
@@ -159,6 +161,54 @@ namespace ProxyPool
                 LogHelper.LogError(ex);
             }
 
+        }
+        #endregion
+
+        #region 修改
+        /// <summary>
+        /// 修改代理
+        /// </summary>
+        /// <param name="item"></param>
+        public void Update(Proxy item)
+        {
+            dbcontext.Proxy.Update(item);
+            dbcontext.SaveChanges();
+        }
+        /// <summary>
+        /// 批量修改
+        /// </summary>
+        /// <param name="proxyList"></param>
+        public void Update(List<Proxy> proxyList)
+        {
+            if (proxyList == null || proxyList.Count == 0)
+                return;
+            try
+            {
+                foreach (var item in proxyList)
+                {
+                    dbcontext.Update(proxyList);
+                }
+                dbcontext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogError("批量修改代理时出错：" + ex);
+            }
+        }
+        #endregion
+
+        #region 过滤已存在的
+        /// <summary>
+        /// 过滤掉已存在的
+        /// </summary>
+        public List<Proxy> FilterExist(List<Proxy> lstProxy)
+        {
+            if (lstProxy != null || lstProxy.Count == 0)
+                return lstProxy;
+            var arrAdress = lstProxy.Select(x => x.Adress).ToList();
+            var existList = dbcontext.Proxy.Where(p => arrAdress.Contains(p.Adress)).ToList();
+            var newList = lstProxy.Where(p => !existList.Exists(e => e.Adress == p.Adress && e.Port == p.Port)).ToList();
+            return newList;
         }
         #endregion
 

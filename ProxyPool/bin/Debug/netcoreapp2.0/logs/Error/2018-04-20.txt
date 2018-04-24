@@ -1,0 +1,279 @@
+2018-04-20 18:20:30.8599  System.Net.WebException: An error occurred while sending the request. 服务器返回的信息无效或不可识别 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 服务器返回的信息无效或不可识别
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: An error occurred while sending the request. 服务器返回的信息无效或不可识别 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 服务器返回的信息无效或不可识别
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:32.4743  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:32.5488  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:33.2602  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:34.2786  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:34.3668  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:34.3907  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:34.3373  System.Net.WebException: An error occurred while sending the request. 无法与服务器建立连接 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 无法与服务器建立连接
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: An error occurred while sending the request. 无法与服务器建立连接 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 无法与服务器建立连接
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:35.5291  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:36.2628  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:36.3002  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:37.3103  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:37.9014  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:20:41.0708  批量修改代理时出错：System.InvalidOperationException: The entity type 'List<Proxy>' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.DbContext.Update[TEntity](TEntity entity)
+   at ProxyPool.ProxyService.Update(List`1 proxyList) in G:\Proxy\ProxyPool\Service\ProxyService.cs:line 189 
+2018-04-20 18:21:47.7089  System.Net.WebException: An error occurred while sending the request. 与服务器的连接意外终止 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 与服务器的连接意外终止
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: An error occurred while sending the request. 与服务器的连接意外终止 ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: 与服务器的连接意外终止
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.GetResponse()
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:21:48.5491  System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ProxyPool.HttpHelper.DownloadHtml(String url, WebProxy proxy, Int32 timeOut) in G:\Proxy\ProxyPool\Helper\HttpHelper.cs:line 32 
+ ProxyVerify.IsAvailable => HttpHelper.DownloadHtml => LogHelper.LogError 
+
+2018-04-20 18:21:54.4647  批量修改代理时出错：System.InvalidOperationException: The entity type 'List<Proxy>' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.DbContext.Update[TEntity](TEntity entity)
+   at ProxyPool.ProxyService.Update(List`1 proxyList) in G:\Proxy\ProxyPool\Service\ProxyService.cs:line 189 
+2018-04-20 18:24:21.6053  批量修改代理时出错：System.InvalidOperationException: The entity type 'List<Proxy>' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.DbContext.Update[TEntity](TEntity entity)
+   at ProxyPool.ProxyService.Update(List`1 proxyList) in G:\Proxy\ProxyPool\Service\ProxyService.cs:line 189 
+2018-04-20 18:25:20.6554  批量修改代理时出错：System.InvalidOperationException: The entity type 'List<Proxy>' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.DbContext.Update[TEntity](TEntity entity)
+   at ProxyPool.ProxyService.Update(List`1 proxyList) in G:\Proxy\ProxyPool\Service\ProxyService.cs:line 189 
+2018-04-20 18:26:39.4563  批量修改代理时出错：System.InvalidOperationException: The entity type 'List<Proxy>' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.DbContext.Update[TEntity](TEntity entity)
+   at ProxyPool.ProxyService.Update(List`1 proxyList) in G:\Proxy\ProxyPool\Service\ProxyService.cs:line 189 

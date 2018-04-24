@@ -15,11 +15,12 @@ namespace ProxyPool
     public class PoolSpider
     {
         public DateTime LastExecuteTime { get; set; }
-        public void Initial()
+        public void Run()
         {
             List<Task> taskList = new List<Task>() {
-
-                new Task(new CrawlXiciDaili().Start)
+                /*new Task(new CrawlXiaoShu().Start),
+                new Task(new CrawlXiciDaili().Start),*/
+                new Task(new CrawlCodeBusy().Start)
             };
 
             while (true)
@@ -27,7 +28,7 @@ namespace ProxyPool
                 try
                 {
                     var s = DateTime.Now - LastExecuteTime;
-                    if (s.TotalMinutes < 5)
+                    if (s.TotalMinutes < ConfigHelper.GetCrawInterval())
                     {
                         //每5分钟更新一次，如果间隔不足5分钟sleep
                         Thread.Sleep(1000 * 3);

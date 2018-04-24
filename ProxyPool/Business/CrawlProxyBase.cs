@@ -10,13 +10,13 @@ namespace ProxyPool
     {
         public CrawlProxyBase()
         {
-            TimeOut = 5;
+            TimeOut = ConfigHelper.GetCrawlTimeOut();
         }
         /// <summary>
         /// 开始抓取代理
         /// </summary>
        public abstract void Start();
-        public bool VerifyProxy(Proxy p)
+        protected bool VerifyProxy(Proxy p)
         {
             if (p == null || string.IsNullOrWhiteSpace(p.Adress) || p.Port == 0)
             {
@@ -30,13 +30,40 @@ namespace ProxyPool
             }
             return state.IsAvailable;
         }
-        public string UrlCombin(string url,string path)
+        /// <summary>
+        /// 验证代理的有效性并保存
+        /// </summary>
+        /// <param name="lstProxy"></param>
+        protected void VerifyAndSave(List<Proxy> listProxy)
+        {
+            if (listProxy == null || listProxy.Count == 0)
+                return;
+            //先过滤掉已存在的，然后再验证有效性
+            var service = new ProxyService();
+            listProxy = service.FilterExist(listProxy);
+            //验证有效性
+            List<Proxy> verifyedProxy = new List<Proxy>();
+            var lockObj = new Object();
+            Parallel.ForEach(listProxy, item =>
+            {
+                if (VerifyProxy(item))
+                {
+                    lock (lockObj)
+                    {
+                        verifyedProxy.Add(item);
+                    }
+
+                }
+            });
+            service.Add(verifyedProxy);
+        }
+        protected string UrlCombin(string url,string path)
         {
             return url.TrimEnd('/') + "/" + path.TrimStart('/');
         }
         /// <summary>
         /// 下载页面的超时时间，单位秒
         /// </summary>
-        public int TimeOut { get; set; }
+        protected int TimeOut { get; set; }
     }
 }

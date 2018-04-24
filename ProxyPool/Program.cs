@@ -13,10 +13,15 @@ namespace ProxyPool
     {
         public static void Main(string[] args)
         {
-            new CrawlXiaoShu().GetUrls();
-            Console.ReadLine();
-            RunCrawlProxy();
-            BuildWebHost(args).Run();
+            try
+            {
+                RunCrawlProxy();
+                BuildWebHost(args).Run();
+            }
+            catch(Exception ex)
+            {
+                LogHelper.LogError("程序意外退出："+ex);
+            }
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
@@ -27,9 +32,9 @@ namespace ProxyPool
         {
             try
             {
-                var crawlThread = new Thread(() => new PoolSpider().Initial());
+                var crawlThread = new Thread(() => new PoolSpider().Run());
                 crawlThread.Start();
-                var verifyThread = new Thread(() => new VerifyExistsProxy().Start());
+                //var verifyThread = new Thread(() => new VerifyExistsProxy().Run());
                 //verifyThread.Start();          
             }
             catch (Exception ex)

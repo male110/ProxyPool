@@ -11,19 +11,77 @@ namespace ProxyPool
     /// </summary>
     public class CrawlXiaoShu : CrawlProxyBase
     {
-        private int timeOut = 5;//下载页面的超时时间
         /// <summary>
         /// 
         /// </summary>
         public override void Start()
         {
-            throw new NotImplementedException();
+            CrawlProxy();
         }
 
+        private void CrawlProxy()
+        {
+            LogHelper.LogMsg("》》》开始抓取小舒代理");
+            try
+            {
+                var urlList = this.GetUrls();
+                Parallel.ForEach(urlList, url =>
+                 {
+                     var html = HttpHelper.DownloadHtml(url, null, TimeOut);
+                     var doc = new HtmlDocument();
+                     doc.LoadHtml(html);
+                     var node = doc.DocumentNode.SelectSingleNode("//div[@class='cont']");
+                     if (node == null)
+                     {
+                         LogHelper.LogError("获取小舒代理ip时出错，请检查网站结构是否有改动");
+                         return;
+                     }
+                     var listProxy = new List<Proxy>();
+                //代理Ip是以br分隔的所以直接取文本
+                var strIp = node.InnerHtml.Replace("<br>", "\n").Replace(" <br />", "\n").Replace(" <br/>", "\n");
+                     var lines = strIp.Split("\n");
+                     Parallel.ForEach(lines, line =>
+                     {
+                         line = line.Trim();
+                         if (string.IsNullOrWhiteSpace(line))
+                         {
+                             return;
+                         }
+                         var index = line.IndexOf('@');
+                         if (index == -1)
+                             return;
+                         var ipWithPort = line.Substring(0, index);
+                         index = ipWithPort.IndexOf(":");
+                         if (index == -1)
+                             return;
+                         var proxy = new Proxy();
+                         proxy.Adress = ipWithPort.Substring(0, index).Trim();
+                         var strPort = ipWithPort.Substring(index + 1).Trim();
+                         int port = 0;
+                         if (!int.TryParse(strPort, out port))
+                         {
+                             LogHelper.LogError("小舒代理，解析端口号时出错：" + ipWithPort);
+                             return;
+                         }
+                         proxy.Port = port;
+                         proxy.Source = url;
+                         listProxy.Add(proxy);
+                     });
+                     VerifyAndSave(listProxy);
+
+                 });
+            }
+            catch(Exception ex)
+            {
+                LogHelper.LogError("抓取小舒代理时出错：" + ex);
+            }
+            LogHelper.LogMsg("《《《小舒代理抓取完成");
+
+        }
         /// <summary>
         /// 取代理页面的url
         /// </summary>
-        public List<string> GetUrls()
+        private List<string> GetUrls()
         {
             var url = "http://www.xsdaili.com/";
             List<string> listUrl = new List<string>();
@@ -55,7 +113,7 @@ namespace ProxyPool
                     var pageUrl = url + "dayProxy/"+i+".html";
                     if(i!=1)
                     {
-                        html = HttpHelper.DownloadHtml(url, null, TimeOut);
+                        html = HttpHelper.DownloadHtml(pageUrl, null, TimeOut);
                         doc.LoadHtml(html);
                     }
                     var titleNodes = doc.DocumentNode.SelectNodes("//div[@class='col-md-12']/div/div[@class='title']/a");
@@ -88,15 +146,22 @@ namespace ProxyPool
         /// <param name="rootNode"></param>
         private int GetTotalPage(HtmlNode rootNode)
         {
-            if(!ConfigHelper.GetIsInit())
+            try
+            {
+                if (!ConfigHelper.GetIsInit())
+                {
+                    return 1;
+                }
+                var pageNodes = rootNode.SelectNodes("//div[@class='page']/a");
+                if (pageNodes == null || pageNodes.Count <= 2)
+                    return 1;
+                var totalPage = ConvertHelper.ToInt(pageNodes[pageNodes.Count - 2].InnerText.Trim(),1);
+                return totalPage;
+            }
+            catch(Exception ex)
             {
                 return 1;
             }
-            var pageNodes=rootNode.SelectNodes("//div[@class='page']/a");
-            if (pageNodes == null || pageNodes.Count <= 2)
-                return 1;
-            var totalPage = Convert.ToInt32(pageNodes[pageNodes.Count - 2].InnerText.Trim());
-            return totalPage;
         }
         #endregion
     }

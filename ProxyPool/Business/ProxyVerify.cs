@@ -18,7 +18,7 @@ namespace ProxyPool
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                  WebProxy webproxy = new WebProxy(proxy.Adress, proxy.Port);
-                 string html = HttpHelper.DownloadHtml("https://www.sogou.com/", webproxy,2);
+                 string html = HttpHelper.DownloadHtml("https://www.sogou.com/", webproxy,ConfigHelper.GetVerifyTimeOut());
                 sw.Stop();
                  if (html.Contains("上网从搜狗开始"))
                  {
