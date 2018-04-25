@@ -16,6 +16,7 @@ namespace ProxyPool
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            ConfigHelper.SetConfiguration(configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -24,6 +25,7 @@ namespace ProxyPool
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient(typeof(ProxyService), typeof(ProxyService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

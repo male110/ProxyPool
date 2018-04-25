@@ -15,8 +15,9 @@ namespace ProxyPool
         {
             try
             {
+                var host = BuildWebHost(args);
                 RunCrawlProxy();
-                BuildWebHost(args).Run();
+                host.Run();
             }
             catch(Exception ex)
             {
@@ -34,8 +35,8 @@ namespace ProxyPool
             {
                 var crawlThread = new Thread(() => new PoolSpider().Run());
                 crawlThread.Start();
-                //var verifyThread = new Thread(() => new VerifyExistsProxy().Run());
-                //verifyThread.Start();          
+                var verifyThread = new Thread(() => new VerifyExistsProxy().Run());
+                verifyThread.Start();          
             }
             catch (Exception ex)
             {

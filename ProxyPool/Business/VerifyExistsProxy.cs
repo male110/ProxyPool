@@ -13,14 +13,14 @@ namespace ProxyPool
     public class VerifyExistsProxy
     {
         DateTime LastVerifyTime { get; set; }
-        public void Start()
+        public void Run()
         {
             while(true)
             {
                 var s = DateTime.Now - LastVerifyTime;
                 if (s.TotalMinutes < ConfigHelper.GetVerifyInterval())
                 {
-                    //每5分钟更新一次，如果间隔不足5分钟sleep
+                    //每x分钟更新一次，如果间隔不足x分钟sleep
                     Thread.Sleep(1000 * 3);
                     continue;
                 }

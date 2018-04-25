@@ -186,7 +186,7 @@ namespace ProxyPool
             {
                 foreach (var item in proxyList)
                 {
-                    dbcontext.Update(proxyList);
+                    dbcontext.Update(item);
                 }
                 dbcontext.SaveChanges();
             }

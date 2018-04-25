@@ -72,9 +72,9 @@ namespace ProxyPool
                 }
                 request.Abort();
             }
-            catch(Exception ex)
+            catch
             {
-                LogHelper.LogError(ex);
+               
             }
             return source;
          

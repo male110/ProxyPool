@@ -18,8 +18,8 @@ namespace ProxyPool
         public void Run()
         {
             List<Task> taskList = new List<Task>() {
-                /*new Task(new CrawlXiaoShu().Start),
-                new Task(new CrawlXiciDaili().Start),*/
+                new Task(new CrawlXiaoShu().Start),
+                new Task(new CrawlXiciDaili().Start),
                 new Task(new CrawlCodeBusy().Start)
             };
 
@@ -39,6 +39,11 @@ namespace ProxyPool
                         t.Start();
                     }
                     Task.WaitAll(taskList.ToArray());
+                    //如果是第一次抓取，抓取完成后将配置文件改成false
+                    if(ConfigHelper.GetIsInit())
+                    {
+                        ConfigHelper.ChangeToNotInit();
+                    }
                     LastExecuteTime = DateTime.Now;
                 }
                 catch (Exception ex)
@@ -47,51 +52,6 @@ namespace ProxyPool
                 }
             }
         }
-
-        /*
-        #region 无忧代理
-        public void Data5u()//无忧代理
-        {
-            try
-            {
-                var service = new ProxyService();
-                List<string> urlList = new List<string>(){//这里只取国内的ip
-                    "http://www.data5u.com/free/gngn/index.shtml",//同办高匿
-                    "http://www.data5u.com/free/gnpt/index.shtml",//同内普通
-                };
-               foreach(var url in urlList)
-                {
-                    var proxyList = new List<Proxy>();
-                    string html =HttpHelper.DownloadHtml(url, null,5);
-                    string xpath = "/html/body/div[@class='wlist']/ul/li/ul[@class='l2']";
-                    HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                    doc.LoadHtml(html);
-                    HtmlNode node = doc.DocumentNode;
-                    HtmlNodeCollection collection = node.SelectNodes(xpath);
-
-                    Parallel.ForEach(collection, (item, state) => {
-                        var rowNodes = item.SelectNodes("span/li");
-                        if (rowNodes == null || rowNodes.Count == 0)
-                            return;
-                        Proxy proxy = new Proxy();
-                        proxy.Adress = rowNodes[0].InnerHtml;
-                        proxy.Port = int.Parse(rowNodes[1].InnerHtml);
-                        proxy.Source = url;
-                        if (VerifyProxy(proxy))
-                        {
-                            proxyList.Add(proxy);
-                        }
-                    });
-                    service.Add(proxyList);
-                }
-                
-            }
-            catch(Exception ex)
-            {
-                LogHelper.LogError("抓取快代理时出错：" + ex);
-            }
-           
-        }
-        #endregion     */
+        
     }
 }

@@ -16,19 +16,24 @@ namespace ProxyPool
              try
              {
                 Stopwatch sw = new Stopwatch();
-                sw.Start();
-                 WebProxy webproxy = new WebProxy(proxy.Adress, proxy.Port);
-                 string html = HttpHelper.DownloadHtml("https://www.sogou.com/", webproxy,ConfigHelper.GetVerifyTimeOut());
-                sw.Stop();
-                 if (html.Contains("上网从搜狗开始"))
-                 {
-                    var byts = System.Text.Encoding.Default.GetBytes(html);
-                    //计算用了多少秒
-                    var time = sw.Elapsed.TotalMilliseconds / 1000;
-                    //计算速度，单位字节
-                    var speed = byts.Length / time;
-                    return  new VerifyState() { IsAvailable = true, Speed = (int)speed };
-                 }
+                //尝试三次
+                for (var i = 0; i < 3; i++)
+                {
+                    sw.Start();
+                    WebProxy webproxy = new WebProxy(proxy.Adress, proxy.Port);
+                    string html = HttpHelper.DownloadHtml("https://www.sogou.com/", webproxy, ConfigHelper.GetVerifyTimeOut());
+                    sw.Stop();
+
+                    if (html.Contains("上网从搜狗开始"))
+                    {
+                        var byts = System.Text.Encoding.Default.GetBytes(html);
+                        //计算用了多少秒
+                        var time = sw.Elapsed.TotalMilliseconds / 1000;
+                        //计算速度，单位字节
+                        var speed = byts.Length / time;
+                        return new VerifyState() { IsAvailable = true, Speed = (int)speed };
+                    }
+                }
              }
              catch(Exception ex)
              {
