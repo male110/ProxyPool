@@ -13,13 +13,17 @@ namespace ProxyPool
             try
             {
                 var url = "https://proxy.coderbusy.com/classical/isp/%e9%98%bf%e9%87%8c%e4%ba%91.aspx";
-                var html = HttpHelper.DownloadHtml(url, null, TimeOut);
+                var html = DownloadProxyPage(url);
                 if (html == "")
                 {
                     LogHelper.LogError("码农代理，无法获取页面" + url);
                     return;
                 }
                 var doc = new HtmlDocument();
+                if (!CheckHtml(html, url, "码农代理"))
+                {
+                    return;
+                }
                 doc.LoadHtml(html);
                 var rootNode = doc.DocumentNode;
                 var totalPage = GetTotalPage(rootNode);
@@ -28,11 +32,13 @@ namespace ProxyPool
                     var newPage = url + "?page=" + i;
                     if(i!=1)
                     {
-                        html = HttpHelper.DownloadHtml(newPage,null,TimeOut);
+                        html = DownloadProxyPage(newPage);
                         doc.LoadHtml(html);
                         rootNode = doc.DocumentNode;
                     }
                     var lines=rootNode.SelectNodes("//div[@id='site-app']//table[@class='table']/tbody/tr");
+                    if (lines == null)
+                        continue;
                     var listProxy = new List<Proxy>();
                     Parallel.ForEach(lines, item => {
                         try

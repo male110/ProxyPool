@@ -28,10 +28,9 @@ namespace ProxyPool
                 foreach (var utlitem in list)
                 {
                     string url = utlitem;
-                    string html = HttpHelper.DownloadHtml(url, null, TimeOut);
-                    if (string.IsNullOrWhiteSpace(html))
+                    string html = DownloadProxyPage(url);
+                    if (!CheckHtml(html,url,"西刺代理"))
                     {
-                        LogHelper.LogError("西刺代理，无法获取页面:" + url);
                         continue;
                     }
                     HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -46,7 +45,11 @@ namespace ProxyPool
                         //如果是第一页，已经取过不用再取
                         if (i != 1)
                         {
-                            html = HttpHelper.DownloadHtml(pageUrl, null, TimeOut);
+                            html = DownloadProxyPage(pageUrl);
+                            if (!CheckHtml(html, pageUrl, "西刺代理"))
+                            {
+                                return;
+                            }
                             doc.LoadHtml(html);
                             node = doc.DocumentNode;
                         }

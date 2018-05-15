@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Threading;
 
 namespace ProxyPool
 {
@@ -65,5 +67,71 @@ namespace ProxyPool
         /// 下载页面的超时时间，单位秒
         /// </summary>
         protected int TimeOut { get; set; }
+        /// <summary>
+        /// 下载代理页面
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        protected string DownloadProxyPage(string url)
+        {
+            try
+            {
+                //IsInit为true第一次运行时，抓取所有的,代理网站一般也有防爬虫的策略，所以也要使用代理
+                if(ConfigHelper.GetIsInit())
+                {
+                    return DownloadWithProxy(url);
+                }
+                else
+                {
+                    //不是初始化每次只抓取第一页，不需要用代理
+                    return HttpHelper.DownloadHtml(url, null, TimeOut);
+                }
+            }
+            catch
+            {
+               
+            }
+            return "";
+        }
+        /// <summary>
+        /// 抓取页面时使用代理
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private string DownloadWithProxy(string url)
+        {
+            try
+            {
+                for (var i = 0; i < 3; i++)
+                {
+                    WebProxy webProxy = null;
+
+                    var service = new ProxyService();
+                    Proxy proxy = service.GetProxy();
+                    if (proxy != null)
+                    {
+                        webProxy = new WebProxy(proxy.Adress + ":" + proxy.Port);
+                    }
+
+                    var html = HttpHelper.DownloadHtml(url, webProxy, TimeOut);
+                    return html;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return "";
+        }
+
+        protected bool CheckHtml(string html,string url,string name)
+        {
+            if (string.IsNullOrWhiteSpace(html))
+            {
+                LogHelper.LogError(name+"，无法获取页面:：" + url);
+                return false;
+            }
+            return true;
+        }
     }
 }

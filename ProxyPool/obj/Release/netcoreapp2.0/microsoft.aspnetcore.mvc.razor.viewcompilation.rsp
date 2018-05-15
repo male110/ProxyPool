@@ -1,0 +1,5 @@
+G:\Proxy\ProxyPool
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=ProxyPool
+--content-root=G:\Proxy\ProxyPool
+--file=

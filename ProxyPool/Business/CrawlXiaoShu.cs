@@ -27,8 +27,12 @@ namespace ProxyPool
                 var urlList = this.GetUrls();
                 Parallel.ForEach(urlList, url =>
                  {
-                     var html = HttpHelper.DownloadHtml(url, null, TimeOut);
+                     var html = DownloadProxyPage(url);
                      var doc = new HtmlDocument();
+                     if (!CheckHtml(html, url, "小舒代理"))
+                     {
+                         return;
+                     }
                      doc.LoadHtml(html);
                      var node = doc.DocumentNode.SelectSingleNode("//div[@class='cont']");
                      if (node == null)
@@ -87,7 +91,7 @@ namespace ProxyPool
             List<string> listUrl = new List<string>();
             try
             {
-                var html = HttpHelper.DownloadHtml(url, null, TimeOut);
+                var html =DownloadProxyPage(url);
 
                 if (string.IsNullOrEmpty(html))
                 {
@@ -113,10 +117,12 @@ namespace ProxyPool
                     var pageUrl = url + "dayProxy/"+i+".html";
                     if(i!=1)
                     {
-                        html = HttpHelper.DownloadHtml(pageUrl, null, TimeOut);
+                        html =DownloadProxyPage(pageUrl);
                         doc.LoadHtml(html);
                     }
                     var titleNodes = doc.DocumentNode.SelectNodes("//div[@class='col-md-12']/div/div[@class='title']/a");
+                    if (titleNodes == null)
+                        continue;
                     foreach (var item in titleNodes)
                     {
                         var title = item.InnerText;
